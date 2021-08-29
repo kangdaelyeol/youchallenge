@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import './db';
 import express from 'express';
 import session from 'express-session';
@@ -6,9 +7,8 @@ import { localsMiddleware } from './middwares';
 import { default as videoRouter } from './routers/videorouter';
 import apiRouter from './routers/apirouter';
 import MongoStore from 'connect-mongo';
-
 const app = express();
-const PORT = 4001;
+const PORT = process.env.PORT || 4001;
 
 app.set('view engine', 'pug');
 app.set('views', process.cwd() + '/src/views');
@@ -18,11 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   session({
-    secret: 'abckdqow',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: 'mongodb://127.0.0.1:27017/rkdeofuf',
+      mongoUrl: process.env.MONGO_URL || undefined,
     }),
   }),
 );
