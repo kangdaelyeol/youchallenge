@@ -1,0 +1,22 @@
+.nav
+  .nav__left 
+    .nav__bar 
+      i(class="fas fa-bars")
+    a(href="/")
+      i(class="fab fa-youtube")
+  .nav__middle
+    form.search__form(action="/video/search")
+      input.search__input(type="text" name="keyword" placeholder="검색")
+      button.search__button 
+        i(class="fas fa-search")
+  .nav__right
+    if !login 
+      a(href="/login") Login 
+      a(href="/join") Join 
+    else 
+      .hello
+        span #{user.nickname}
+      a(href="/logout") logout
+      a(href=`/myprofile/${user._id}`) MyProfile
+      a(href='/video/upload') uploadVideo
+    

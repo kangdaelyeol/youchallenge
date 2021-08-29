@@ -1,0 +1,5 @@
+mixin comment(comment)
+  li(data-id=`${comment._id}`)
+    span=comment.data 
+    if String(user._id) === String(comment.owner)
+      span(class="commentremove", data-commentid=`${comment._id}`) 💥

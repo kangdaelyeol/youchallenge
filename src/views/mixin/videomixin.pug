@@ -1,0 +1,8 @@
+mixin paintingVideo(video)
+  .video__item
+    a(href=`/video/see/${video._id}`)
+      img.item__thumb(src=`/${video.thumbURL}`)
+      p.item__title=video.title
+    .item__description
+      span=video.owner.nickname
+      span #{video.meta.views} views

@@ -1,0 +1,18 @@
+.user__bar 
+  if login
+    .bar__home.bar__item
+      a(href="/") 
+        i.fas.fa-home
+        span Home
+    .bar__search.bar__item
+      a(href="/search")
+        i.fas.fa-search
+        span Search 
+    .bar__profile.bar__item
+      a(href=`/myprofile/${user._id}`)
+        i.fas.fa-user
+        span Profile
+  else 
+    .bar__profile.bar__item
+      a(href="/login")
+        span login!

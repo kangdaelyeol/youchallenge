@@ -1,0 +1,36 @@
+// GLOBAL
+@import "./reset.scss";
+@import "./variable.scss";
+
+// component
+@import "./component/header.scss";
+@import "./component/login.scss";
+@import "./component/home.scss";
+@import "./component/navbar.scss";
+@import "./component/videosection.scss";
+@import "./component/search.scss";
+@import "./component/editprofile.scss";
+@import "./component/uploadvideo.scss";
+@import "./component/profile.scss";
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: $bg-color;
+}
+
+main{
+  margin-top:12vh;
+  margin-left: 200px;
+}
+
+
+// input__file customize
+
+
+.login__form #input__videofile, 
+.login__form #input__thumbfile{
+  all:unset;
+  display:none;
+}
+

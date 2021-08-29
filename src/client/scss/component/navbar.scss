@@ -1,0 +1,34 @@
+.user__bar{
+  position: fixed;
+  top:10vh;
+  width:200px;
+  background-color: #1b1b1b;
+  height: 90vh;
+  .bar__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor:pointer;
+    height: 100px;
+    transition: all .2s ease;
+    &:hover{
+      background-color: #2b2b2b;
+    }
+    &:hover a{
+      color:#808080;
+    }
+    a{
+      text-decoration: none;
+      color:#7b7b7b;
+      font-size: 22px;
+      i{
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.bar__hidden{
+  display: none;
+}

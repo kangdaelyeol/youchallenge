@@ -1,0 +1,16 @@
+extends base 
+include mixin/videomixin
+
+block maincontents 
+  .profile__section
+    .profile__name=user.nickname
+    a(href=`/editprofile/${user._id}`) EditProfile 
+    h4 myVideo
+    .home__grid
+      each video in videos 
+        +paintingVideo(video)
+        +paintingVideo(video)
+        +paintingVideo(video)
+        +paintingVideo(video)
+        +paintingVideo(video)
+        +paintingVideo(video)

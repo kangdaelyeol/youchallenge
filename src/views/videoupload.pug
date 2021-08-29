@@ -1,0 +1,19 @@
+extends base 
+
+block maincontents 
+  .video__record
+    video.recordvideo
+    .record__btn
+      button.recordbtn StartRecording
+      button.downloadbtn download
+  .login__form
+    form.video__form(method="post" enctype="multipart/form-data")
+      label(for="input__videofile") SelectVideo
+      input#input__videofile(type="file" accept="video/*" name="video")
+      label(for="input__thumbfile") SelectThumb
+      input#input__thumbfile(type='file' accept="image/*" name="thumb")
+      input(type="text" name="title" placeholder="Title")
+      input(type="text" name="tags" placeholder="Hashtags (seperate comma)")
+      button Upload!
+block scriptcontents
+  script(src="/static/js/videorecord.js" defer)

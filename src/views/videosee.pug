@@ -1,0 +1,31 @@
+extends base 
+include mixin/commentmixin
+
+block maincontents
+  .videosection
+    video(src=`/${video.videoURL}` data-id=`${video._id}` class="video")
+    span.currenttime 00:00 
+    span  / 
+    span.fulltime 00:00
+    button.playbtn play
+    button.mutebtn mute 
+    button.fullscreenbtn Fullscreen
+    
+    input(type="range" class="videotime" step="1")
+    input(type="range" class="videovolume" max="1" step="0.1")
+  h3=video.title 
+  span.views #{video.meta.views === 1 ? `${video.meta.views} view` : `${video.meta.views} views`}
+  ul
+    each tag in video.tags 
+      li=tag
+  if login
+    form.commentform
+      input(type='text', name="comment" class="comment" placeholder="Commnet!")
+      button comment!
+  ul.commentsection 
+    each comment in comments 
+      +comment(comment)
+
+block scriptcontents
+  script(src="/static/js/comment.js" defer)
+  script(src="/static/js/videocontroller.js" defer)

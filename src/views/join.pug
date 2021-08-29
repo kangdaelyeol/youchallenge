@@ -1,0 +1,11 @@
+extends base 
+
+block maincontents 
+  if errormessage 
+    h1=errormessage
+  .login__form
+    form(method="post") 
+      input(type="text" required name="id" placeholder="id")
+      input(type="text" required name="nickname" placeholder="nickname")
+      input(type="text" required name="password" placeholder="password")
+      button Join

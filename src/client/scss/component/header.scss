@@ -1,0 +1,105 @@
+.nav {
+  display: flex;
+  position: fixed;
+  top:0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background-color: black;
+  opacity: 0.9;
+  .nav__left {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    .nav__bar{
+      cursor: pointer;
+      i.fa-bars{
+        font-size: 25px;
+        color:#6b6b6b;
+        margin-left: 15px;
+      }
+    }
+    i.fa-youtube{
+      font-size: 40px;
+      margin-left: 15px;
+      color:red;
+    }
+  }
+  .nav__middle{
+    width: 33%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .search__form{
+      display: flex;
+      align-items: center;
+    }
+    .search__input {
+      width:350px;
+      height: 5vh;
+      background-color: #6d6d6d;
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      padding-left: 5px;
+      &::placeholder{
+        color: whitesmoke;
+        padding-left: 3px;
+        font-size: 15px;
+      }
+    }
+    .search__button{
+      height: 5vh;
+      width: 70px;
+      background-color: #424242;
+      border:none;
+      outline: none;
+      border-radius: 4px;
+      transition: all ease .2s;
+      &:hover{
+        background-color: #3b3b3b;
+      }
+    }
+  }
+  .nav__right {
+    display: flex;
+    width: 33%;
+    padding-right: 30px;
+    justify-content: flex-end;
+    align-items: center;
+    a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: whitesmoke;
+      transition: all .2s ease;
+      &:hover {
+        color:#8b8b8b;
+      }
+    }
+    .hello{
+      width:50px;
+      height: 50px;
+      background-color: #2b2b2b;
+      border-radius: 50%;
+      color:#ababab;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: all .4s ease;
+      span{
+        pointer-events: none;
+      }
+      &:hover{
+        width:auto;
+        border-radius: 4px;
+        padding: 0 30px;
+      }
+    }
+  }
+}

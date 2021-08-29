@@ -1,0 +1,73 @@
+.errormessage {
+  color: red;
+  font-size: 30px;
+}
+
+.login__form{
+  // border:1px solid grey;
+  border-radius: 10px;
+  width:40vw;
+  margin:0 auto;
+  padding-top: 100px;
+  .form__input{
+    display: flex;
+    align-items: center;
+    label{
+      color:#9b9b9b;
+      margin-right: 10px;
+    }
+    &:nth-child(2) input{
+      width:280px;
+    }
+  }
+  .joinform{
+    margin-top:10px;
+    a{
+      all:unset;
+      color:#6b6b6b;
+      font-size: 25px;
+      cursor: pointer;
+      transition: all .2s ease;
+      &:hover{
+        color:#9b9b9b
+      }
+    }
+  }
+  button{
+    all:unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    color:#EEEEEE;
+    background-color:#2b2b2b;
+    border-radius: 4px;
+    transition: all .2s ease;
+    width: 130px;
+    height: 60px;
+    cursor: pointer;
+    &:hover {
+      background-color: #4b4b4b;
+    }
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input{
+      all:unset;
+      width: 300px;
+      margin-bottom: 10px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: #6b6b6b;
+      color:#EEEEEE;
+      padding-left: 3px;
+      &::placeholder{
+        color:#9b9b9b;
+        padding-left: 5px;
+      }
+    }
+  }
+}

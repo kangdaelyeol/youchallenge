@@ -1,0 +1,13 @@
+extends base 
+
+block maincontents 
+  .login__form
+    form(method="post")
+      .form__input
+        label(for="userid") UserID
+        input(type="text" required name="userid" value=`${user.id}`)
+      .form__input
+        label(for="nickname") Nickname
+        input(type="text" required name="nickname" value=`${user.nickname}`)
+      button edit!
+    a.changepw(href=`/changepassword/${user._id}`) ChangePassword &rarr;

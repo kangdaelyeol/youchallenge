@@ -1,0 +1,11 @@
+extends base 
+include mixin/videomixin
+block maincontents 
+  if videos
+    .search__by
+      span Searching By #{keyword}
+    .home__grid 
+      each video in videos 
+        +paintingVideo(video)
+  else 
+    h4 Sorry... Not found videos.

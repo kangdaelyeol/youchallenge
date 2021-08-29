@@ -1,0 +1,14 @@
+extends base 
+
+block maincontents 
+  if errormessage
+    .errormessage 
+      h1=errormessage
+  .login__form
+    form(method="post") 
+
+      input(type="text" name="id" placeholder="id")
+      input(type="text" name="password" placeholder="password")
+      button Login!
+    .joinform 
+      a(href="/join") Create Account
