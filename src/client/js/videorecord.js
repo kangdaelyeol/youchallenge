@@ -69,12 +69,14 @@ recordBtn.addEventListener('click', handleRecord);
 
 const init = async () => {
   downloadBtn.disabled = true;
-  videoStream = await navigator.mediaDevices.getUserMedia({
-    video: true,
-    Audio: true,
-  });
-  recordVideo.srcObject = videoStream;
-  recordVideo.play();
+  try{
+    videoStream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      Audio: true,
+    });
+    recordVideo.srcObject = videoStream;
+    recordVideo.play();
+  } catch(e) {console.log(e)}
 };
 
 init();

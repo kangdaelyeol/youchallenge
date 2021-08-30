@@ -85,15 +85,17 @@ const handleEnded = async () => {
   playBtn.textContent = 'Play';
   const videoID = video.dataset.id;
   // Add views to Video
-  const res = await fetch(`/api/video/${videoID}/addview`,{
-    method: "post"
-  });
-  if(res.status === 201){
-    const json = await res.json();
-    const view = json.views;
-    console.log(view);
-    videoViews.textContent = view === 1 ? `1 view` : `${view} views`;  
-  }
+  try{
+    const res = await fetch(`/api/video/${videoID}/addview`,{
+      method: "post"
+    });
+    if(res.status === 201){
+      const json = await res.json();
+      const view = json.views;
+      console.log(view);
+      videoViews.textContent = view === 1 ? `1 view` : `${view} views`;  
+    }
+  } catch(e) {console.log(e)}
 }
 
 video.addEventListener('loadedmetadata', handlemetadata);

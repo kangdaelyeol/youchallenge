@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import regeneratorRuntime from "regenerator-runtime";
+import regeneratorRuntime from 'regenerator-runtime';
 const video = document.querySelector('.video');
 const commentForm = document.querySelector('.commentform');
 const commentInput = document.querySelector('.comment');
@@ -32,23 +32,27 @@ const handleComment = async (e) => {
   }).catch((e) => console.log(e));
   console.log(res);
   if (res.status === 201) {
-    const json = await res.json();
+    const json = await res.json().catch((e) => console.log(e));
     commentInput.value = '';
     createComment(comment, json.commentID);
   }
 };
 
 const handleDelete = async (e) => {
-  if(e.target.className !== "commentremove") return;
+  if (e.target.className !== 'commentremove') return;
   const commentID = e.target.dataset.commentid;
-  const res = await fetch(`/api/video/${commentID}/delete`,{
-    method:"post"
-  });
-  if(res.status === 201) {
-    const li = commentSection.querySelector(`[data-id="${commentID}"]`);
-    li.remove();
+  try {
+    const res = await fetch(`/api/video/${commentID}/delete`, {
+      method: 'post',
+    });
+    if (res.status === 201) {
+      const li = commentSection.querySelector(`[data-id="${commentID}"]`);
+      li.remove();
+    }
+  } catch (e) {
+    console.log(e);
   }
-}
+};
 
 if (commentForm) commentForm.addEventListener('submit', handleComment);
-commentSection.addEventListener("click", handleDelete);
+commentSection.addEventListener('click', handleDelete);

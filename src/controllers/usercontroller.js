@@ -1,8 +1,10 @@
 import User from '../model/user';
 import Video from '../model/video';
 export const home = async (req, res) => {
-  const videos = await Video.find({}).populate("owner").sort({ createAt: 'desc' });
-  return res.render('home', { pagetitle: 'home', videos });
+  try{
+    const videos = await Video.find({}).populate("owner").sort({ createAt: 'desc' });
+    return res.render('home', { pagetitle: 'home', videos });
+  } catch(e) {console.log(e)}
 };
 
 export const getLogin = (req, res) => {
@@ -11,21 +13,23 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
   const { id, password } = req.body;
-  const user = await User.findOne({ id });
-  if (!user)
-    return res.render('login', {
-      pagetitle: 'login',
-      errormessage: 'this id is not exists',
-    });
-  const compare = await User.comparePW(password, user.password);
-  if (!compare) {
-    return res.render('login', {
-      pagetitle: 'login',
-      errormessage: 'password is not match!',
-    });
-  }
-  req.session.user = user;
-  req.session.login = true;
+  try{
+    const user = await User.findOne({ id });
+    if (!user)
+      return res.render('login', {
+        pagetitle: 'login',
+        errormessage: 'this id is not exists',
+      });
+    const compare = await User.comparePW(password, user.password);
+    if (!compare) {
+      return res.render('login', {
+        pagetitle: 'login',
+        errormessage: 'password is not match!',
+      });
+    }
+    req.session.user = user;
+    req.session.login = true;
+  } catch(e) {console.log(e)}
   // loginLogic
   return res.redirect('/');
 };
@@ -60,11 +64,13 @@ export const logout = (req, res) => {
 
 export const getProfile = async (req, res) => {
   const { _id } = req.session.user;
-  const videos = await Video.find({owner: _id});
-  return res.render('profile', {
-    pagetitle: `profile - ${req.session.user.id}`,
-    videos
-  });
+  try{
+    const videos = await Video.find({owner: _id});
+    return res.render('profile', {
+      pagetitle: `profile - ${req.session.user.id}`,
+      videos
+    })
+  } catch(e) {console.log(e)}
 };
 
 export const getEditProfile = (req, res) => {
@@ -74,14 +80,16 @@ export const getEditProfile = (req, res) => {
 export const postEditProfile = async (req, res) => {
   const { id } = req.params;
   const { userid, nickname } = req.body;
-  const exist = await User.exists({ $or: [{ id: userid }, { nickname }] });
-  if(exist) return res.redirect("/");
-  const user = await User.findById(id);
-  if (!user) return res.redirect('/');
-  user.id = userid;
-  user.nickname = nickname;
-  await user.save();
-  req.session.user = user;
+  try{
+    const exist = await User.exists({ $or: [{ id: userid }, { nickname }] });
+    if(exist) return res.redirect("/");
+    const user = await User.findById(id);
+    if (!user) return res.redirect('/');
+    user.id = userid;
+    user.nickname = nickname;
+    await user.save();
+    req.session.user = user;
+  } catch(e) {console.log(e)}
   return res.redirect('/');
 };
 
@@ -92,11 +100,13 @@ export const getChangePW = (req, res) => {
 export const postChangePW = async (req, res) => {
   const { id } = req.params;
   const { password, changepassword } = req.body;
-  const user = await User.findById(id);
-  if (!user) return res.redirect('/');
-  const comp = await User.comparePW(password, user.password);
-  if (!comp) return res.redirect('/');
-  user.password = await User.hashPW(changepassword);
-  await user.save();
+  try{
+    const user = await User.findById(id);
+    if (!user) return res.redirect('/');
+    const comp = await User.comparePW(password, user.password);
+    if (!comp) return res.redirect('/');
+    user.password = await User.hashPW(changepassword);
+    await user.save();
+  } catch(e) {console.log(e)}
   return res.redirect('/logout');
 };
