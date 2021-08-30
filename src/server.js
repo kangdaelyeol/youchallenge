@@ -1,6 +1,9 @@
 import "regenerator-runtime";
-import "doten/config";
+import "dotenv/config";
 import './db';
+import "./model/comment"
+import "./model/user";
+import "./model/video";
 import express from 'express';
 import session from 'express-session';
 import { default as globalRouter } from './routers/globalrouter';
