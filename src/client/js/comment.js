@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-
+import regeneratorRuntime from "regenerator-runtime";
 const video = document.querySelector('.video');
 const commentForm = document.querySelector('.commentform');
 const commentInput = document.querySelector('.comment');

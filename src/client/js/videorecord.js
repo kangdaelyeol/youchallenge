@@ -1,5 +1,5 @@
 // import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
-
+import regeneratorRuntime from "regenerator-runtime";
 const recordVideo = document.querySelector('.recordvideo');
 const recordBtn = document.querySelector('.recordbtn');
 const downloadBtn = document.querySelector('.downloadbtn');

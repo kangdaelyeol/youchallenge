@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import regeneratorRuntime from "regenerator-runtime";
 const playBtn = document.querySelector('.playbtn');
 const muteBtn = document.querySelector('.mutebtn');
 const videoTime = document.querySelector('.videotime');
